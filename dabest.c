@@ -4,10 +4,11 @@
 void type_pinakes2d(int** arr,int size,int size2);
 int push(int **arr,int z,int m,int n,int x);
 
+int highscore=0;//maybe
+
 int main(void){
     int z=0,m=4,n=4,i=0,j=0;
     int opa=0;
-//    int highscore=0;//maybe
     int **arr;
 srand(time(NULL));
 
@@ -36,7 +37,7 @@ srand(time(NULL));
                         
     type_pinakes2d(arr,m,n); //prwth print
 
-    printf("\n\t   ----------> 4:< 8:^ 6:> 2:v <----------\n");
+    printf("\n\t   ----------> 4:< 8:^ 6:> 2:v <----------\n Score:%d\n",highscore);
     scanf("%d",&z);
     if(!(z==2 || z==4 || z==8 || z==6)){
         printf("\t   ----------->bro mou lathos input <------------\n");
@@ -105,6 +106,7 @@ int j=0,k=0;
          
             if(arr[x][j]==arr[x][j+1] && arr[x][j]!=0){
                 arr[x][j]*=2;
+                highscore+=arr[x][j];
                 arr[x][j+1]=0;
             }
         }
@@ -142,6 +144,7 @@ int j=0,k=0;
          
             if(arr[j][x]==arr[j+1][x] && arr[j][x]!=0){
                 arr[j][x]*=2;
+                highscore+=arr[x][j];
                 arr[j+1][x]=0;
             }
         }
@@ -179,6 +182,7 @@ int j=0,k=0;
          
             if(arr[x][j]==arr[x][j-1] && arr[x][j]!=0){
                 arr[x][j]*=2;
+                highscore+=arr[x][j];
                 arr[x][j-1]=0;
             }
         }
@@ -217,6 +221,7 @@ int j=0,k=0;
         if(j+1<n){
             //if(j==0 || j==2)
             if(arr[j+1][x]==arr[j][x] && arr[j][x]!=0){
+                highscore+=arr[x][j];
                 arr[j+1][x]*=2;
                 arr[j][x]=0;
             }
