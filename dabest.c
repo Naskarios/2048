@@ -6,6 +6,8 @@ int push(int **arr,int z,int m,int n,int x);
 
 int main(void){
     int z=0,m=4,n=4,i=0,j=0;
+    int opa=0;
+//    int highscore=0;//maybe
     int **arr;
 srand(time(NULL));
 
@@ -20,34 +22,33 @@ srand(time(NULL));
             for(j=0;j<n;j++)
                 arr[i][j]=0;
             }
-    while(1){
-                                                              //TA TYXAI BALTA SE KANA FUNCTION GIA NA MPEI COPYCAT
+    while(1){        
+        if(opa==0){                                               //TA TYXAI BALTA SE KANA FUNCTION GIA NA MPEI COPYCAT
                     i=rand()%m; //tyxaio 2 mesa stin while
                     j=rand()%n;
                     if(arr[i][j]==0)
                     arr[i][j]=2;
-                    
-                    
+        }opa=0;
+                               
                         //i=rand()%m; //tyxaio 4 mesa stin while
                         //j=rand()%n;
                         //arr[i][j]=4;
                         
     type_pinakes2d(arr,m,n); //prwth print
 
-    printf("\n4:< 8:^ 6:> 2:v ZZ\n");
+    printf("\n\t   ----------> 4:< 8:^ 6:> 2:v <----------\n");
     scanf("%d",&z);
-    if(z==1)
-    break;
-    
-    
-
-    for(i=0;i<4;i++){
-        
-        push(arr,z,m,n,i);
+    if(!(z==2 || z==4 || z==8 || z==6)){
+        printf("\t   ----------->bro mou lathos input <------------\n");
+         while(getchar()!='\n');//katharismos
+         opa=1;
+    continue;
     }
-        
-   // type_pinakes2d(arr,m,n); //prwth print
+    else{
+        for(i=0;i<4;i++)   
+            push(arr,z,m,n,i);
 }
+    }//telos game loop
 for(i=0;i<m;i++)free(arr[i]);
 free(arr);
 return 0;
@@ -65,15 +66,17 @@ void type_pinakes2d(int** arr,int size,int size2)
         printf("\t\t\t "); 
 
         for(i=0;i<size2;i++) //paules
-        printf("--");
+        printf("-");
     printf("\n");
 	for(i=0;i<size;i++)
 	{ 
     printf("\t\t\t\b\b"); //to paw kentro
-    printf("%d|  ",i+1); 
+    printf("|  "); 
 		for(j=0;j<size2;j++)
 		{
-			printf("%d  ",arr[i][j]);
+			printf("%d   ",arr[i][j]);
+        if(arr[i][j]>=10)
+        printf("\b");
 		}
 	printf("\n");}
 }
