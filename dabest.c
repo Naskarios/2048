@@ -7,13 +7,18 @@ int push(int **arr,int z,int m,int n,int x);
 int highscore=0;//maybe
 
 int main(void){
+    FILE * fstream;
     int z=0,m=4,n=4,i=0,j=0;
     int opa=0;
     int **arr;
+    char Pname[15];
+
 srand(time(NULL));
 
     printf("\t\tWELCOME TO DA BEST GAME\n \t\t\t**2_0_4_8**\n");
     
+    printf("Ena onoma parakalw filtatos:\n");
+    fgets(Pname,15,stdin);
     arr=(int**) malloc(m*sizeof(int*));// malloc 1d    
     for(i=0;i<m;i++){
         arr[i]=(int*) malloc(n*sizeof(int));// 2d
@@ -39,7 +44,11 @@ srand(time(NULL));
 
     printf("\n\t   ----------> 4:< 8:^ 6:> 2:v <----------\n Score:%d\n",highscore);
     scanf("%d",&z);
-    if(!(z==2 || z==4 || z==8 || z==6)){
+    if(z==0){
+        printf("Exiting game...\nThanks for playing!!!\n");
+        break;
+    }
+    else if(!(z==2 || z==4 || z==8 || z==6)){
         printf("\t   ----------->bro mou lathos input <------------\n");
          while(getchar()!='\n');//katharismos
          opa=1;
@@ -50,8 +59,13 @@ srand(time(NULL));
             push(arr,z,m,n,i);
 }
     }//telos game loop
-for(i=0;i<m;i++)free(arr[i]);
-free(arr);
+        for(i=0;i<m;i++)free(arr[i]);
+            free(arr);
+
+    fstream=fopen("Scores.txt","w+");
+    fprintf(fstream,"\n%s:%d\n",Pname,highscore);
+    fclose(fstream);
+
 return 0;
 }
 
