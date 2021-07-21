@@ -9,7 +9,7 @@ int highscore=0;//maybe
 int main(void){
     FILE * fstream;
     int z=0,m=4,n=4,i=0,j=0;
-    int opa=0;
+    
     int **arr;
     char Pname[15];
 
@@ -29,12 +29,13 @@ srand(time(NULL));
                 arr[i][j]=0;
             }
     while(1){        
-        if(opa==0){                                               //TA TYXAI BALTA SE KANA FUNCTION GIA NA MPEI COPYCAT
+                                             //TA TYXAI BALTA SE KANA FUNCTION GIA NA MPEI COPYCAT
                     i=rand()%m; //tyxaio 2 mesa stin while
                     j=rand()%n;
                     if(arr[i][j]==0)
                     arr[i][j]=2;
-        }opa=0;
+                    else
+                    continue;
                                
                         //i=rand()%m; //tyxaio 4 mesa stin while
                         //j=rand()%n;
@@ -51,7 +52,7 @@ srand(time(NULL));
     else if(!(z==2 || z==4 || z==8 || z==6)){
         printf("\t   ----------->bro mou lathos input <------------\n");
          while(getchar()!='\n');//katharismos
-         opa=1;
+         
     continue;
     }
     else{
@@ -62,7 +63,7 @@ srand(time(NULL));
         for(i=0;i<m;i++)free(arr[i]);
             free(arr);
 
-    fstream=fopen("Scores.txt","w+");
+    fstream=fopen("Scores.txt","a+");
     fprintf(fstream,"\n%s:%d\n",Pname,highscore);
     fclose(fstream);
 
