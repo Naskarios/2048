@@ -7,7 +7,7 @@ int push(int **arr,int z,int m,int n,int x);
 int highscore=0;//maybe
 
 int main(void){
-    FILE * fstream;
+    FILE* fstream;
     int z=0,m=4,n=4,i=0,j=0;
     
     int **arr;
@@ -43,11 +43,23 @@ srand(time(NULL));
                         
     type_pinakes2d(arr,m,n); //prwth print
 
-    printf("\n\t   ----------> 4:< 8:^ 6:> 2:v <----------\n Score:%d\n",highscore);
-    scanf("%d",&z);
+    printf("\n\t   ----------> 4:< 8:^ 6:> 2:v <----------\n0:Exit 1:LeaderBoard Score:%d\n",highscore);//menu
+    scanf("%d",&z);//basiko input
     if(z==0){
         printf("Exiting game...\nThanks for playing!!!\n");
         break;
+    }
+    else if(z==1){
+        char str[35];//?
+        fstream=fopen("Scores.txt","r");
+        if(!fstream){
+            printf("bro logika den yparxei to arxeio\n");
+        }
+        printf("vvv Printing Leadeoboards vvv\n");
+        while(!feof(fstream)){
+        fgets(str,35,fstream);
+        printf("%s",str);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<--------------------------Kati paizei
+        }
     }
     else if(!(z==2 || z==4 || z==8 || z==6)){
         printf("\t   ----------->bro mou lathos input <------------\n");
@@ -64,7 +76,7 @@ srand(time(NULL));
             free(arr);
 
     fstream=fopen("Scores.txt","a+");
-    fprintf(fstream,"\n%s:%d\n",Pname,highscore);
+    fprintf(fstream,"\n%s:%d\n",Pname,highscore);//add in leaderboard 
     fclose(fstream);
 
 return 0;
