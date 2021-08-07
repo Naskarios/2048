@@ -30,13 +30,17 @@ srand(time(NULL));
             }
     while(1){        
                                              //TA TYXAI BALTA SE KANA FUNCTION GIA NA MPEI COPYCAT
+                                             while(1){
                     i=rand()%m; //tyxaio 2 mesa stin while
                     j=rand()%n;
-                    if(arr[i][j]==0)
+                    if(arr[i][j]==0){
                     arr[i][j]=2;
+                    printf("new to the %d %d",i,j);
+                    break;
+                    }
                     else
                     continue;
-                               
+                                             }
                         //i=rand()%m; //tyxaio 4 mesa stin while
                         //j=rand()%n;
                         //arr[i][j]=4;
@@ -76,7 +80,7 @@ srand(time(NULL));
             free(arr);
 
     fstream=fopen("Scores.txt","a+");
-    fprintf(fstream,"\n%s:%d\n",Pname,highscore);//add in leaderboard 
+    fprintf(fstream,"%s:%d\n",Pname,highscore);//add in leaderboard 
     fclose(fstream);
 
 return 0;
@@ -195,17 +199,17 @@ int j=0,k=0;
       for(k=0;k<n;k++)  {//>                                    6666666666666666666
        for(j=n;j>0;j--)//sorts
        {
-           if(j-1>=0){
+           if(j-1>=0){///////////////////////////
            if(arr[x][j]==0 && arr[x][j-1]!=0)
            {
                arr[x][j]=arr[x][j-1];
                arr[x][j-1]=0;
            }
            }
-       }
+    }
       }
       for(j=n;j>0;j--){//combos
-        if(j-1>=0){
+        if(j-1>=0){/////////////////////////////
          
             if(arr[x][j]==arr[x][j-1] && arr[x][j]!=0){
                 arr[x][j]*=2;
@@ -248,8 +252,8 @@ int j=0,k=0;
         if(j+1<n){
             //if(j==0 || j==2)
             if(arr[j+1][x]==arr[j][x] && arr[j][x]!=0){
-                highscore+=arr[x][j];
                 arr[j+1][x]*=2;
+                highscore+=arr[j][x];
                 arr[j][x]=0;
             }
         }
