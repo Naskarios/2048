@@ -197,7 +197,7 @@ int j=0,k=0;
         break;
         case 6:             /////////////////////////////
       for(k=0;k<n;k++)  {//>                                    6666666666666666666
-       for(j=n;j>0;j--)//sorts
+       for(j=n-1;j>0;j--)//sorts
        {
            if(j-1>=0){///////////////////////////
            if(arr[x][j]==0 && arr[x][j-1]!=0)
@@ -208,8 +208,8 @@ int j=0,k=0;
            }
     }
       }
-      for(j=n;j>0;j--){//combos
-        if(j-1>=0){/////////////////////////////
+      for(j=n-1;j>0;j--){//combos
+        if(j-1>0){/////////////////////////////
          
             if(arr[x][j]==arr[x][j-1] && arr[x][j]!=0){
                 arr[x][j]*=2;
@@ -217,9 +217,10 @@ int j=0,k=0;
                 arr[x][j-1]=0;
             }
         }
+        type_pinakes2d(arr,m,n); //prwth print
       }
               for(k=0;k<n;k++)  {
-       for(j=n;j>0;j--)//sorts
+       for(j=n-1;j>0;j--)//sorts
        {
            if(j-1>=0){
          
@@ -231,6 +232,7 @@ int j=0,k=0;
 
            }
        }
+       type_pinakes2d(arr,m,n); //prwth print
       }
         break;
         case 2: 
@@ -280,3 +282,7 @@ int j=0,k=0;
     
     return 0;
 }
+
+
+
+//TO 2 trexei mia parapanw
